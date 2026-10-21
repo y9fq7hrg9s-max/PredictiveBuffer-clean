@@ -1,0 +1,29 @@
+{
+    "geode": "5.11.2",
+    "gd": {
+        "win": "2.2081",
+        "ios": "2.2081"
+    },
+    "version": "v1.0.0",
+    "id": "ai.predictivebuffer",
+    "name": "Predictive Input Buffer",
+    "developer": "lilWC",
+    "description": "Trajectory-based input buffer mod",
+    "settings": {
+        "preset": {
+            "type": "int",
+            "name": "Buffer Preset",
+            "description": "1 = 2 ticks / 2 ticks<br>2 = 4 / 4<br>3 = 8 / 8<br>4 = 16 / 8<br>5 = OFF",
+            "default": 1,
+            "min": 1,
+            "max": 5,
+            "control": {
+                "arrows": true,
+                "arrow-step": 1,
+                "slider": true,
+                "slider-step": 1,
+                "input": false
+            }
+        }
+    }
+}
