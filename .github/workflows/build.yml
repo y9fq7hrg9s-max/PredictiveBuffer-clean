@@ -1,0 +1,37 @@
+name: Build Predictive Buffer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: iOS
+            os: macos-latest
+            target: iOS
+          - name: Windows
+            os: windows-latest
+
+    name: Build ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the mod
+        id: build
+        uses: geode-sdk/build-geode-mod@v1
+        with:
+          target: ${{ matrix.config.target }}
+
+      - name: Upload the .geode file
+        uses: actions/upload-artifact@v4
+        with:
+          name: predictive-buffer-${{ matrix.config.name }}
+          path: ${{ steps.build.outputs.build-output }}
